@@ -1,5 +1,7 @@
 body {
     font-family: sans-serif;
+    font-size: large;
+    font-weight: 500;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4; /* A light gray background */
@@ -223,6 +225,9 @@ main {
 
 .background-info {
     line-height: 1.6; /* Improve readability of the text */
+    display: grid; /* Make it a grid container */
+    grid-template-columns: auto 1fr; /* Two columns: auto for image, 1fr for text */
+    gap: 25px;
 }
 
 .background-info h3 {
@@ -261,29 +266,45 @@ main {
 .services {
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 12px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0; /* Initially hidden for fade-in */
     transform: translateY(20px); /* Initial upward movement */
-    animation: slideInLeft 4s ease-out 1s forwards;  /* Apply fadeInUp animation */
-
+    animation: slideInLeft 4s ease-out 1s forwards; /* Apply slideInLeft animation */
+    display: grid; /* Make it a grid container */
+    grid-template-columns: auto 1fr; /* Two columns: auto for image, 1fr for text */
+    gap: 15px; /* Increased gap between icon and paragraph */
+    align-items: center; /* Vertically align image and text */
+    text-align: center; /* Center the heading */
 }
 
 /* Stagger the animation for each column */
 .technical-skills {
     animation-delay: 0.2s;
-
 }
 
 .soft-skills {
     animation-delay: 2.4s;
-
 }
 
 .services {
     animation-delay: 4.6s;
+}
 
+
+.technical-skills .services-image img,
+.soft-skills .services-image img,
+.services-image img {
+    width: 120px; /* Adjust icon size as needed */
+    height: auto; /* Maintain aspect ratio */
+    justify-self: center; /* Center the image in its grid cell */
+}
+
+.technical-skills .paragraph,
+.soft-skills .paragraph,
+.services .paragraph {
+    /* You might want to style the paragraph specifically */
 }
 
 .skills-services p {
@@ -293,6 +314,8 @@ main {
     opacity: 0; /* Initially hidden for fade-in */
     transform: translateY(10px); /* Initial slight upward movement */
     animation: slideInLeft 4s ease-out 1s forwards; /* Fade in for headings */
+    grid-column: 1 / -1; /* Make the heading span across all grid columns */
+    text-align: center; /* Center the text of the main heading */
 }
 
 .skills-services ul {
@@ -302,6 +325,7 @@ main {
     opacity: 0; /* Initially hidden for fade-in */
     transform: translateY(10px); /* Initial slight upward movement */
     animation: slideInLeft 4s ease-out 1s forwards; /* Fade in for lists */
+    grid-column: 2 / -1; /* Start the list in the second grid column */
 }
 
 .skills-services ul li {
@@ -313,8 +337,9 @@ main {
 @keyframes slideInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-20px);    }
-   
+        transform: translateX(-20px);
+    }
+
     100% {
         opacity: 1; /* Reset for the loop */
         transform: translateX(0);
@@ -518,6 +543,11 @@ footer {
         margin: 10px 0;
         /* ... other stacked list styles ... */
     }
+    .background-info {
+        display: inline; /* Make it a grid container */
+
+    }
+    
 }
 
 /* Media query for even smaller screens (e.g., phones) */
